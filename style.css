@@ -11,7 +11,7 @@
     background: hsl(202, 11%, 29%);
     color: hsl(255, 100%, 100%);
     font-size: 2rem;
-    padding-block-start: 0.5rem;
+    padding-block-start: 4.5rem;
     padding-block-end: 0.5rem;
     padding-inline-end: 0.75rem;
     text-align: end;
@@ -42,13 +42,13 @@
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3) inset;
     outline: none;
   }
-  .calculator__key--operator {
+  #calculator__key--operator {
     background: hsl(208, 25%, 86%);
   }
-  .calculator__key--operator:active {
+  #calculator__key--operator:active {
     background: hsl(208, 24%, 80%);
   }
-  .calculator__key--enter {
+  #calculator__key--enter {
     grid-column: 4 / 5;
     grid-row: 2 / span 4;
     background: hsl(357, 100%, 72%);

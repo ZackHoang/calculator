@@ -1,6 +1,7 @@
 let firstNumber; 
 let secondNumber; 
 let operator; 
+let displayValue = 0; 
 
 function add (a, b) {
     return a + b;  
@@ -18,14 +19,22 @@ function divide (a, b) {
     return a / b; 
 }
 
-function operate (firstNumber, operator, secondNumber) {
+function operate (a, operator, b) {
     if (operator === "+") {
-        return add(firstNumber, secondNumber); 
+        return add(a, b); 
     } else if (operator === "-") {
-        return subtract(firstNumber, secondNumber); 
+        return subtract(a, b); 
     } else if (operator === "x") {
-        return multiply(firstNumber, secondNumber); 
+        return multiply(a, b); 
     } else (operator === "/"); {
-        return divide (firstNumber, secondNumber); 
+        return divide (a, b); 
     }
 }
+
+const numbers = document.querySelectorAll('#number'); 
+numbers.forEach((number) => {
+    number.addEventListener('click', function(){
+        console.log('number'); 
+        document.querySelector('.calculator__output').textContent += number.textContent; 
+    }); 
+}); 
