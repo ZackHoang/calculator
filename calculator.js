@@ -1,8 +1,8 @@
 let firstNumber = ""; 
 let secondNumber = ""; 
-let operatorValue; 
-let toggle = 1; 
-let displayValue = 0; 
+let operatorValue = ""; 
+let toggleNumber = 1; 
+let toggleOperator = 1;  
 let result = ""; 
 
 function add (a, b) {
@@ -36,16 +36,16 @@ function evaluate(a, operator, b) {
 const numbers = document.querySelectorAll('#number'); 
 const display = document.querySelector('.calculator__output'); 
 numbers.forEach((number) => {
-    number.addEventListener('click', function(){
-        console.log('number'); 
+    number.addEventListener('click', function(){ 
         display.textContent += number.textContent; 
-        if (toggle === 1) {
+        if (toggleNumber === 1) {
             firstNumber += number.textContent; 
-        } else if (toggle === 2) {
-            secondNumber += number.textContent; 
+        } else if (toggleNumber === 2) {
+            secondNumber += number.textContent;
+            toggleOperator = 2;  
         }
-        console.log(firstNumber); 
-        console.log(secondNumber); 
+        console.log('First Number: ' + firstNumber); 
+        console.log('Second Number: ' + secondNumber); 
     }); 
 }); 
 
@@ -53,9 +53,21 @@ const operators = document.querySelectorAll('#calculator__key--operator');
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
         display.textContent += operator.textContent; 
-        operatorValue = operator.textContent; 
-        toggle = 2; 
-        console.log(operatorValue);  
+        if (toggleOperator === 1) {
+            toggleNumber = 2;
+            operatorValue = operator.textContent;
+            console.log('operator: ' + operatorValue);
+        } else if (toggleOperator === 2) {
+            console.log('operator: ' + operatorValue);
+            result = evaluate(Number(firstNumber), operatorValue, Number(secondNumber));
+            operatorValue = operator.textContent;
+            console.log('result: ' + result); 
+            display.textContent = result; 
+            display.textContent += operator.textContent; 
+            firstNumber = result;    
+            secondNumber = ""; 
+        } 
+        //console.log('operator: ' + operatorValue);  
     })
 })
 
