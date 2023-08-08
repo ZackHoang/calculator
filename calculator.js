@@ -22,19 +22,24 @@ function divide (a, b) {
 }
 
 function evaluate(a, operator, b) {
+    console.log("[" + operator + "]");
+
     if (operator === "+") {
         return add(a, b); 
     } else if (operator === "-") {
         return subtract(a, b); 
     } else if (operator === "x") {
         return multiply(a, b); 
-    } else (operator === "/"); {
+    } else if (operator === "/"); {
         return divide (a, b); 
     }
 }
 
 const numbers = document.querySelectorAll('#number'); 
 const display = document.querySelector('.calculator__output'); 
+const operators = document.querySelectorAll('#calculator__key--operator'); 
+const results = document.querySelector('#calculator__key--enter'); 
+
 numbers.forEach((number) => {
     number.addEventListener('click', function(){ 
         display.textContent += number.textContent; 
@@ -49,7 +54,6 @@ numbers.forEach((number) => {
     }); 
 }); 
 
-const operators = document.querySelectorAll('#calculator__key--operator'); 
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
         display.textContent += operator.textContent; 
@@ -67,13 +71,15 @@ operators.forEach((operator) => {
             firstNumber = result;    
             secondNumber = ""; 
         } 
-        //console.log('operator: ' + operatorValue);  
     })
 })
 
-const results = document.querySelector('#calculator__key--enter'); 
 results.addEventListener('click', () => {
+    console.log('Final firstNumber: ' + firstNumber); 
+    console.log('Final operator: ' + operatorValue); 
+    console.log('Final secondNumber: ' + secondNumber); 
     result = evaluate(Number(firstNumber), operatorValue, Number(secondNumber));
+    console.log('final result: ' + result); 
     display.textContent = result; 
 }); 
 
