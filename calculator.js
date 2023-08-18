@@ -39,6 +39,7 @@ const numbers = document.querySelectorAll('#number');
 const display = document.querySelector('.calculator__output'); 
 const operators = document.querySelectorAll('#calculator__key--operator'); 
 const results = document.querySelector('#calculator__key--enter'); 
+const clear = document.querySelector('#AC'); 
 
 numbers.forEach((number) => {
     number.addEventListener('click', function(){ 
@@ -79,16 +80,16 @@ results.addEventListener('click', () => {
     console.log('Final operator: ' + operatorValue); 
     console.log('Final secondNumber: ' + secondNumber); 
     result = evaluate(Number(firstNumber), operatorValue, Number(secondNumber));
-    console.log('final result: ' + result); 
+    console.log('Final result: ' + result); 
     display.textContent = result; 
 }); 
 
-const clear = document.querySelector('#AC'); 
 clear.addEventListener('click', () => {
     display.textContent = ""; 
     result = ""; 
     firstNumber = ""; 
     operatorValue = ""; 
     secondNumber = ""; 
-    toggle = 1; 
+    toggleNumber = 1;
+    toggleOperator = 1;  
 })
